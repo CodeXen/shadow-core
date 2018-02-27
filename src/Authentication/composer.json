@@ -1,0 +1,19 @@
+{
+    "name": "codexen/shadow-auth",
+    "require": {
+    },
+    "autoload": {
+        "psr-4": {
+            "Shadow\\Authentication\\": ""
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.1-dev"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev"
+}
