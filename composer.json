@@ -13,7 +13,7 @@
             "Shadow\\": "src/"
         },
         "files": [
-            "src/Shadow/Support/Helper.php"
+            "src/Support/Helper.php"
         ]
     },
     "minimum-stability": "dev",

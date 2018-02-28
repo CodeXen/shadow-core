@@ -1,0 +1,19 @@
+{
+    "name": "codexen/shadow-router",
+    "require": {
+    },
+    "autoload": {
+        "psr-4": {
+            "Shadow\\Router\\": ""
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.1-dev"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev"
+}

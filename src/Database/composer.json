@@ -1,0 +1,19 @@
+{
+    "name": "codexen/shadow-database",
+    "require": {
+    },
+    "autoload": {
+        "psr-4": {
+            "Shadow\\Database\\": ""
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.1-dev"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev"
+}
