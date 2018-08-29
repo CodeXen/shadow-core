@@ -1,14 +1,5 @@
 <?php
-/*
-*
-* @ Package: Router - simple router class for php
-* @ Class: Router
-* @ Author: izni burak demirtas / @izniburak <info@burakdemirtas.org>
-* @ Web: http://burakdemirtas.org
-* @ URL: https://github.com/izniburak/php-router
-* @ Licence: The MIT License (MIT) - Copyright (c) - http://opensource.org/licenses/MIT
-*
-*/
+
 namespace Shadow\Router;
 
 use Shadow\Router\Router\RouterRequest;
@@ -21,7 +12,7 @@ class Router
 
     protected $routes = [];
     protected $middlewares = [];
-    protected $groups = [];
+    public $groups = [];
 
     protected $patterns = [
         '{a}' => '([^/]+)',
@@ -39,8 +30,8 @@ class Router
     ];
 
     protected $paths = [
-        'controllers' => '../application/Controllers',
-        'middlewares' => '../application/Middlewares'
+        'controllers' => '../application/Http/Controllers',
+        'middlewares' => '../application/Http/Middlewares'
     ];
 
     protected $errorCallback;
@@ -62,20 +53,20 @@ class Router
         }
 
         if(isset($params['paths']) && $paths = $params['paths']) {
-            $this->paths['controllers']	= (
+            $this->paths['controllers'] = (
                 isset($paths['controllers']) ? $this->baseFolder . '/' . trim($paths['controllers'], '/') . '/' : $this->paths['controllers']
             );
 
-            $this->paths['middlewares']	= (
+            $this->paths['middlewares'] = (
                 isset($paths['middlewares']) ? $this->baseFolder . '/' . trim($paths['middlewares'], '/') . '/' : $this->paths['middlewares']
             );
         }
 
         if(isset($params['namespaces']) && $namespaces = $params['namespaces']) {
-            $this->namespaces['controllers']	= (
+            $this->namespaces['controllers']    = (
                 isset($namespaces['controllers']) ? trim($namespaces['controllers'], '\\') . '\\' : ''
             );
-            $this->namespaces['middlewares']	= (
+            $this->namespaces['middlewares']    = (
                 isset($namespaces['middlewares']) ? trim($namespaces['middlewares'], '\\') . '\\' : ''
             );
         }
@@ -330,9 +321,14 @@ class Router
             $group['after'] = $list['after'];
         }
 
-        $group['before'] = array_values(array_unique($group['before']));
-        $group['after'] = array_values(array_unique($group['after']));
-
+        if(!is_array($group['before'])) {
+            $group['before'] = array_values(array_unique($group['before']));
+        }
+        
+        if(!is_array($group['after'])) {
+            $group['after'] = array_values(array_unique($group['after']));
+        }
+        
         array_push($this->groups, $group);
 
         if(is_object($callback)) {

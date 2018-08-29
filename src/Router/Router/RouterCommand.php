@@ -64,7 +64,7 @@ class RouterCommand
                 $middlewareClass = str_replace([$namespace, '\\', '.'], ['', '/', '/'], $segments[0]);
                 $middlewareMethod = $segments[1];
 
-                $middlewareFile = realpath($path . $middlewareClass . '.php');
+                $middlewareFile = realpath($path). '/' .$middlewareClass . '.php';
                 if(!file_exists($middlewareFile)) {
                     return $this->exception($middlewareClass . ' Middleware File is not found. Please, check file.');
                 }

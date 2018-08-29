@@ -2,20 +2,16 @@
 
 namespace Shadow\Core;
 
-use Shadow\Support\ServiceProviderInterface;
+use Shadow\Router\Guard;
 use Shadow\Router\Router;
-
-use Whoops\Run as WhoopsRun;
+use Shadow\Support\ServiceProviderInterface;
 use Whoops\Handler\PrettyPageHandler as WhoopsPrettyPageHandler;
+use Whoops\Run as WhoopsRun;
 
 class Application extends Container
 {
 	protected $loadedProviders = [];
 	protected $providersList = [];
-	
-	public function __construct() {
-		$this->providersList = config('app', 'providers');
-	}
 
 	public function run() {
 		$this->initWhoops();
@@ -23,10 +19,11 @@ class Application extends Container
 	}
 
 	public function connectDatabase() {
+		
 	}
 
 	public function app($key = null) {	
-		
+		$this->providersList = config('app', 'providers');
 		$this->bind($key, $this->providersList[$key]);
 		$resolve = $this->resolve($key);
 
@@ -53,8 +50,9 @@ class Application extends Container
 
 	public function setupRouter() {
 		$router = new Router();
+		$guard = new Guard($router);
 		
-		require_once "../application/Routes/web.php";
+		require_once "../application/Http/Routes/web.php";
 	}
 
 	public function registerProvider(ServiceProviderInterface $provider) {

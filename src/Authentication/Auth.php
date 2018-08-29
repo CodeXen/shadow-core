@@ -36,6 +36,13 @@ class Auth
 
 		return false;
 	}
+	
+	public static function check() {
+		return self::checkSession();
+	}
 
+	public static function logout() {
+		unset($_SESSION['shadow']['auth']);
+	}
 
 }

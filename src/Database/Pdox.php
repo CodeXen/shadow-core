@@ -2,7 +2,7 @@
 
 namespace Shadow\Database;
 
-use Shadow\Cache;
+use Cache;
 use PDO;
 use PDOException;
 use Closure;

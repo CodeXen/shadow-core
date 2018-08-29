@@ -6,7 +6,7 @@ use App\Controllers\Controller;
 
 class controllername extends Controller
 {
-	public function __construnct() {
+	public function __construct() {
 
 	}
 

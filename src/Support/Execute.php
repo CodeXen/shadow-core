@@ -56,4 +56,16 @@ trait Execute {
 
 		exit;
 	}
+
+	public function view($view, $data = []) {
+		return $this->app('View')->make($view, $data);
+	}
+
+	public function viewArc($view, $data = []) {
+		return $this->app('View')->arc($view, $data);
+	}
+
+	public function validate($input, $rules = []) {
+		return $this->app('Validate')->check($input, $rules);
+	}
 }

@@ -41,6 +41,8 @@ class Input
 			}
 		}
 		
+		unset($input['_csrfToken']);
+		
 		return $input;
 	}
 
