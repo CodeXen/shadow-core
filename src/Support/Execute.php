@@ -50,15 +50,11 @@ trait Execute {
 	}
 
 	public function render($view, $data = array()) {
-		$dwoo = new Dwoo();
-
-		echo $dwoo->get('../application/Views/'. $view . '.dwoo.php', $data);
-
-		exit;
+		
 	}
 
 	public function view($view, $data = []) {
-		return $this->app('View')->make($view, $data);
+		return $this->app('View')->render($view, $data);
 	}
 
 	public function viewArc($view, $data = []) {

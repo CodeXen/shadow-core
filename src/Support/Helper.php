@@ -70,18 +70,9 @@ if(! function_exists('redirect')) {
 
 if(! function_exists('render')) {
 	function render($view, $data = array()) {
-		$core = new Dwoo\Core();
+		$template = new Shadow\View\Raze;
 		
-		$core->setCompileDir('../bin/storage/views/compiled/');
-		echo $core->get('../application/Views/'. $view . '.dwoo.php', $data);
-		
-		// if(remote('application', 'APP_DEBUG')) {
-		// 	$debugbar = debugbar();
-		// 	echo $debugbar->renderHead();
-		// 	echo $debugbar->render();	
-		// }
-
-		exit;
+		$template->render($view, $data);
 	}
 }
 
@@ -138,7 +129,7 @@ if(! function_exists('debugbar')) {
 
 if(! function_exists('view')) {
 	function view($view, $data = []) {
-		return Shadow\View\View::make($view, $data);
+		return Shadow\View\View::render($view, $data);
 	}
 }
 
