@@ -30,7 +30,7 @@ class Auth
 	}
 
 	public static function checkSession() {
-		if ($_SESSION['shadow']['auth']) {
+		if (isset($_SESSION['shadow']['auth']) && $_SESSION['shadow']['auth']) {
 			return true;
 		}
 
