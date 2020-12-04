@@ -2,7 +2,7 @@
 
 namespace controller_namespace;
 
-use App\Controllers\Controller;
+use App\Http\Controllers\Controller;
 
 class controllername extends Controller
 {
