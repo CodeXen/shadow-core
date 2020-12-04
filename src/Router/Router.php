@@ -25,8 +25,8 @@ class Router
     ];
 
     protected $namespaces = [
-        'middlewares' => 'App\Middlewares\\',
-        'controllers' => 'App\Controllers\\'
+        'middlewares' => 'App\Http\Middlewares\\',
+        'controllers' => 'App\Http\Controllers\\'
     ];
 
     protected $paths = [
