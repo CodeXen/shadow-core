@@ -19,7 +19,11 @@ if(! function_exists('config')) {
 
 if(! function_exists('remote')) {
 	function remote($a = null, $b = null) {
-		$filepath = getcwd() . '/remote.ini';
+		if(strpos(getcwd(), 'public') !== false) {
+			$filepath = getcwd() . '/../remote.ini';
+		} else {
+			$filepath = getcwd() . '/remote.ini';
+		}
 		$config = parse_ini_file($filepath, true);
 		
 		$data = $config;
@@ -34,7 +38,6 @@ if(! function_exists('remote')) {
 		return $data;
 	}
 }
-
 
 if(! function_exists('predump')) {
 	function predump($data = null) {
