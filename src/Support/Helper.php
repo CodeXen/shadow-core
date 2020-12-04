@@ -111,9 +111,7 @@ if(! function_exists('baseUrl')) {
 		// output: http://
 		$protocol = strtolower(substr($_SERVER["SERVER_PROTOCOL"],0,5))=='https://'?'https://':'http://';
 		
-		// return $protocol.$hostName."/";
-		// return: http://localhost/myproject/
-		return $protocol.$hostName.$pathInfo['dirname']."/";
+		return $protocol.$hostName;
 	}
 }
 
