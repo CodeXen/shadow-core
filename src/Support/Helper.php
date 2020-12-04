@@ -19,7 +19,7 @@ if(! function_exists('config')) {
 
 if(! function_exists('remote')) {
 	function remote($a = null, $b = null) {
-		$filepath = getcwd() . '/../remote.ini';
+		$filepath = getcwd() . '/remote.ini';
 		$config = parse_ini_file($filepath, true);
 		
 		$data = $config;
@@ -45,8 +45,8 @@ if(! function_exists('predump')) {
 }
 
 
-if(! function_exists('dumpexit')) {
-	function dumpexit($data = null) {
+if(! function_exists('dump')) {
+	function dump($data = null) {
 		echo "<pre>";
 		print_r($data);
 		echo "</pre>";
@@ -136,5 +136,21 @@ if(! function_exists('view')) {
 if(! function_exists('_csrfToken')) {
 	function _csrfToken() {
 		return $_SESSION['_csrfToken'];
+	}
+}
+
+if(! function_exists('encrypt')) {
+	function encrypt($q) {
+		$cryptKey = "qJB0rGtIn5UB1xG03efyCp";
+		$qEncoded = base64_encode(mcrypt_encrypt(MCRYPT_RIJNDAEL_256, md5($cryptKey), $q, MCRYPT_MODE_CBC, md5(md5($cryptKey))));
+		return $qEncoded;
+	}
+}
+
+if(! function_exists('decrypt')) {
+	function decrypt($q) {
+		$cryptKey = "qJB0rGtIn5UB1xG03efyCp";
+		$qDecoded = rtrim(mcrypt_decrypt(MCRYPT_RIJNDAEL_256, md5($cryptKey), base64_decode($q), MCRYPT_MODE_CBC, md5(md5($cryptKey))), "\0");
+		return $qDecoded;
 	}
 }
