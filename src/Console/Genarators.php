@@ -33,7 +33,7 @@ class Genarators
         array_pop($controllerFolders);
         $foldersString = implode('/', $controllerFolders);
 
-        $namespace = trim('App\Controllers\\' . str_replace('/', '\\', $foldersString), '\\');
+        $namespace = trim('App\Http\Controllers\\' . str_replace('/', '\\', $foldersString), '\\');
 
         $template = file_get_contents($templatefile);
         $template = str_replace('controllername', $controllerFileName, $template);
